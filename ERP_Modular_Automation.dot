@@ -1,0 +1,45 @@
+digraph ERP_Modular_Automation {
+  rankdir=TB;
+  size="10";
+
+  Inputs [label="Inputs\n(Documents, Voice, Images,\nTransactions, Sensors)", shape=parallelogram, style=filled, fillcolor=lightyellow];
+
+  NLP [label="NLP / NLU\n(Intent & Entity Extraction)", shape=box, style=filled, fillcolor=lightblue];
+  Vision [label="Vision AI\n(OCR, QC, Barcode,\nDefect Detection)", shape=box, style=filled, fillcolor=lightblue];
+  Fraud [label="Fraud Detection\n(Anomaly, Duplication,\nSuspicious Transactions)", shape=box, style=filled, fillcolor=lightblue];
+
+  Reason [label="Reasoning Engine\n(Policy Checks, Optimization,\nAgent Orchestration)", shape=box, style=filled, fillcolor=lightgreen];
+
+  Finance [label="Finance/AP-AR\nInvoice Capture,\n3-Way Match,\nCash App, Treasury", shape=ellipse, style=filled, fillcolor=lightpink];
+  Procurement [label="Procurement\nSupplier Scoring,\nRFQs, PO Drafting,\nContract Review", shape=ellipse, style=filled, fillcolor=lightpink];
+  Inventory [label="Inventory/WMS\nCycle Counts,\nSlotting Optimization,\nATP/CTP Predictions", shape=ellipse, style=filled, fillcolor=lightpink];
+  Manufacturing [label="Manufacturing/MES\nPredictive Maintenance,\nQC, Scheduling,\nEnergy Optimization", shape=ellipse, style=filled, fillcolor=lightpink];
+  Sales [label="Sales/CRM\nLead Scoring,\nPrice Optimization,\nSentiment Analysis", shape=ellipse, style=filled, fillcolor=lightpink];
+  HR [label="HR & Payroll\nResume Parsing,\nAttrition Prediction,\nPayroll Anomalies", shape=ellipse, style=filled, fillcolor=lightpink];
+  Support [label="Service & Support\nChatbots,\nSLA Prediction,\nKnowledge Drafts", shape=ellipse, style=filled, fillcolor=lightpink];
+
+  Outputs [label="Outputs\n(ERP Updates,\nPayments,\nReports,\nAlerts, Dashboards)", shape=parallelogram, style=filled, fillcolor=lightyellow];
+
+  Inputs -> NLP;
+  Inputs -> Vision;
+  Inputs -> Fraud;
+  NLP -> Reason;
+  Vision -> Reason;
+  Fraud -> Reason;
+
+  Reason -> Finance;
+  Reason -> Procurement;
+  Reason -> Inventory;
+  Reason -> Manufacturing;
+  Reason -> Sales;
+  Reason -> HR;
+  Reason -> Support;
+
+  Finance -> Outputs;
+  Procurement -> Outputs;
+  Inventory -> Outputs;
+  Manufacturing -> Outputs;
+  Sales -> Outputs;
+  HR -> Outputs;
+  Support -> Outputs;
+}

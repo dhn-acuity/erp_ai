@@ -1,0 +1,42 @@
+digraph ERP_AI_Automation {
+  rankdir=LR;
+  size="8";
+
+  Inputs [label="Inputs\n(Email, Docs, Voice, Images,\nTransactions, Sensors)", shape=parallelogram, style=filled, fillcolor=lightyellow];
+
+  NLP [label="NLP / NLU\n(Intent & Entity Extraction,\nChat/Voice Interfaces)", shape=box, style=filled, fillcolor=lightblue];
+  Vision [label="Vision AI\n(OCR, QC, Barcode,\nDamage Detection)", shape=box, style=filled, fillcolor=lightblue];
+  Fraud [label="Fraud Detection\n(Anomaly Detection,\nDuplicate Invoices,\nSuspicious Transactions)", shape=box, style=filled, fillcolor=lightblue];
+
+  Reason [label="Reasoning Engine\n(Policy Checks,\nOptimization,\nMulti-Agent Orchestration)", shape=box, style=filled, fillcolor=lightgreen];
+
+  Finance [label="Finance/AP-AR\n(Auto Invoicing,\n3-Way Match,\nCash App)", shape=ellipse, style=filled, fillcolor=lightpink];
+  Procurement [label="Procurement\n(RFQs, PO Creation,\nSupplier Selection)", shape=ellipse, style=filled, fillcolor=lightpink];
+  Inventory [label="Inventory/WMS\n(Slotting, Replenishment,\nCycle Counts)", shape=ellipse, style=filled, fillcolor=lightpink];
+  HR [label="HR & Payroll\n(Resume Parsing,\nAttrition Prediction,\nPayroll Anomalies)", shape=ellipse, style=filled, fillcolor=lightpink];
+  Manufacturing [label="Manufacturing/MES\n(QC, Predictive Maintenance,\nScheduling)", shape=ellipse, style=filled, fillcolor=lightpink];
+  Sales [label="Sales/CRM\n(Order-to-Cash,\nLead Scoring,\nSentiment Insights)", shape=ellipse, style=filled, fillcolor=lightpink];
+
+  Outputs [label="Outputs\n(ERP Updates,\nPayments,\nReports,\nAlerts)", shape=parallelogram, style=filled, fillcolor=lightyellow];
+
+  Inputs -> NLP;
+  Inputs -> Vision;
+  Inputs -> Fraud;
+  NLP -> Reason;
+  Vision -> Reason;
+  Fraud -> Reason;
+
+  Reason -> Finance;
+  Reason -> Procurement;
+  Reason -> Inventory;
+  Reason -> HR;
+  Reason -> Manufacturing;
+  Reason -> Sales;
+
+  Finance -> Outputs;
+  Procurement -> Outputs;
+  Inventory -> Outputs;
+  HR -> Outputs;
+  Manufacturing -> Outputs;
+  Sales -> Outputs;
+}
